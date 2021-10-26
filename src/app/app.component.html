@@ -1,4 +1,14 @@
 <div class="content" role="main">
-  <ng-for-of></ng-for-of>
+  <app-progress-bar></app-progress-bar>
+  <hr/>
+  <button (click)="currentProgress = currentProgress + 10">
+    currentProgress
+  </button>
+  <app-progress-bar
+  [progress]="currentProgress"
+  [backgroundColor]="'#9e9e9e'"
+  [progressColor]="'#2e8b57'"
+  >
+  </app-progress-bar>
 </div>
 

@@ -5,12 +5,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { NgForOfComponent } from './ngforof.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloComponent,
-    NgForOfComponent
+    NgForOfComponent,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,
