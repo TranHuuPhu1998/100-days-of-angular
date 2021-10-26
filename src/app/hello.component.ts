@@ -6,8 +6,27 @@ import { Component } from "@angular/core";
     <h2>Hello there!</h2>
     <h3>Your name: {{ user.name }}</h3>
     <p>Your name: {{ user.age }}</p>
-    <button (click)="showInfo()">Click me!</button>
-    <input type="text" [ngModel]="user.name" (ngModelChange)="user.name = $event" />
+    <div *ngIf="user.age >= 13">
+      Bạn có thể xem nội dung PG-13
+    </div>
+    <div *ngIf="user.age < 13">
+      Bạn không thể xem nội dung PG-13
+    </div>
+    <hr/>
+    <div *ngIf="user.age >= 13; else noPG13">
+      Bạn có thể xem nội dung PG-13
+    </div>
+    <ng-template #noPG13>
+      <div>
+      ng-template Bạn không thể xem nội dung PG-13
+      </div>
+    </ng-template>
+    <hr/>
+    <ng-template [ngIf]="user.age >= 13" [ngIfElse]="noPG13">
+      <div>
+        Bạn có thể xem nội dung PG-13
+      </div>
+    </ng-template>
   `,
 })
 export class HelloComponent {
@@ -16,6 +35,6 @@ export class HelloComponent {
   }
   user = {
     name: "Phu Tran",
-    age: 24,
+    age: 12,
   };
 }
