@@ -3,12 +3,14 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component'
+import { HelloComponent } from './hello.component';
+import { NgForOfComponent } from './ngforof.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HelloComponent
+    HelloComponent,
+    NgForOfComponent
   ],
   imports: [
     BrowserModule,
