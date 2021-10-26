@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dataBinding';
+  questions = {
+    question1: true,
+    question2: false
+  }
 }
