@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { NgForOfComponent } from './ngforof.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { AuthorListComponent } from './author-list/author-list.component';
+import { AuthorDetailComponent } from './author-detail/author-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloComponent,
     NgForOfComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    AuthorListComponent,
+    AuthorDetailComponent
   ],
   imports: [
     BrowserModule,
