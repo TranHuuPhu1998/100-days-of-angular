@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  .title {
+    color: rgba($color: #292222, $alpha: 0.2);
+    font-size: 120px;
+    padding: 0 30px;
+    font-weight: bold;
+  }
+  .instruction {
+    color: #bfbfbf;
+    padding: 0 30px;
+    margin-top: auto;
+  }
+  .todo-wrapper {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
+    & app-header{
+      height: 50px;
+      border-bottom: 1px solid rgba($color: #292222, $alpha: 0.5);
+      box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
