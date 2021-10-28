@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { interval } from 'rxjs';
+import { interval, Observable, timer } from 'rxjs';
+import { map, take, takeWhile } from "rxjs/operators"
 
 @Component({
   selector: 'app-root',
@@ -18,13 +19,23 @@ export class AppComponent {
 
   interval$ = interval(1000);
 
-  // ngOnInit(): void {
-  //   //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-  //   //Add 'implements OnInit' to the class.
-  //   this.interval$.subscribe(val => {
-  //     this.time = val;
-  //   });
-  // }
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.interval$.subscribe(val => {
+      this.time = val;
+    });
+  }
+
+  counter$: Observable<number>;
+  count = 6;
+
+  constructor() {
+    this.counter$ = timer(0,1000).pipe(
+      take(this.count),
+      map(() => --this.count)
+    );
+  }
 
   address = {
     city: 'Hue',
