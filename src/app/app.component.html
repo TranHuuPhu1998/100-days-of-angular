@@ -1,31 +1,32 @@
-<app-tab-group [activeIndex]="currentIndex">
-    <app-tab-panel title="First Tab">
-      First tab Content
-    </app-tab-panel>
-    <app-tab-panel title="Second Tab">
-      Second tab Content
-    </app-tab-panel>
-    <app-tab-panel title="Third Tab">
-      Third tab Content
-    </app-tab-panel>
-    <app-tab-panel title="Fourth Tab">
-      Fourth tab Content
-    </app-tab-panel>
-</app-tab-group>
+<hr />
 
-<hr/>
+<button class="btn btn-primary" (click)="showTab = !showTab">Toggle tab 4</button>
+
 
 <app-bs-tab-group>
-	<app-tab-panel title="Tab 1">
-			content tab 1
-	</app-tab-panel>
-	<app-tab-panel title="Tab 2">
-			content tab 2
-	</app-tab-panel>
-	<app-tab-panel title="Tab 3">
-			content tab 3
-	</app-tab-panel>
-  <app-tab-panel title="Tab 4">
-			content tab 4
-	</app-tab-panel>
+  <app-tab-panel title="Tab 1">
+    <ng-template tabContent>
+      content tab 1
+      <app-count></app-count>
+    </ng-template>
+  </app-tab-panel>
+  <app-tab-panel title="Tab 2">
+    <ng-template tabContent>
+      content tab 2
+      <app-count></app-count>
+    </ng-template>
+  </app-tab-panel>
+  <app-tab-panel title="Tab 3">
+    <ng-template tabContent>
+      content tab 3
+      <app-count></app-count>
+    </ng-template>
+  </app-tab-panel>
+  <app-tab-panel title="Tab 4" *ngIf="showTab">
+    <ng-template tabContent>
+      content tab 4
+      <app-count></app-count>
+    </ng-template>
+  </app-tab-panel>
 </app-bs-tab-group>
+<hr />

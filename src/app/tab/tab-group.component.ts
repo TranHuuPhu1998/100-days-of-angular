@@ -1,5 +1,5 @@
 
-import { Component, Input, OnInit, Output , EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output , EventEmitter, ContentChild, QueryList } from '@angular/core';
 import { TabPanelComponent } from './tab-panel.component';
 @Component({
   selector: 'app-tab-group',
@@ -18,13 +18,14 @@ import { TabPanelComponent } from './tab-panel.component';
       </div>
     </div>
 
-    <div class="tab-body" *ngIf="tabPanelList.length; else noTabs">
-      <ng-container *ngTemplateOutlet="tabPanelList[activeIndex].panelBody"></ng-container>
+    <div class="tab-body">
+        <ng-container *ngFor="let tab of tabPanelList;let idx = index">
+        <div *ngIf="idx === activeIndex">
+          <ng-container *ngTemplateOutlet="tab.implicitBody"></ng-container>
+        </div>
+      </ng-container>
     </div>
 
-    <ng-template #noTabs>
-      No more tab
-    </ng-template>
   `,
   styles : [`
     .tab-header{
@@ -44,11 +45,24 @@ import { TabPanelComponent } from './tab-panel.component';
 export class TabGroupComponent implements OnInit {
   tabPanelList: TabPanelComponent[] = [];
 
+  @ContentChild(TabPanelComponent) tabPanels: QueryList<TabPanelComponent>;
+
+  ngAfterContentInit(): void {
+    //Called after ngOnInit when the component's or directive's content has been initialized.
+    //Add 'implements AfterContentInit' to the class.
+    console.log(this.tabPanels);
+    // theo giỏi sự thây đổi của tabPanels or QueryList tabPanels
+    // content được mất đi thêm vào
+    this.tabPanels.changes.subscribe(console.log)
+  }
+
   @Input() activeIndex = 0;
   @Output() tabActiveChange = new EventEmitter<number>();
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('tabPanelList',this.tabPanelList)
+  }
 
   selectItem(idx: number) {
     this.activeIndex = idx;
